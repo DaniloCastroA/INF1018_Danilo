@@ -1,0 +1,37 @@
+Ao rodar o programa até a letra "a" do enunciado pude perceber que o sistema é Little Endian pois o valor menos significativo fica armazenado no menor endereco.
+o tamanho do int por padrao é 4 bytes e aqui tambem é  4 bytes.
+aqui da para ver os 4 bytes que vi:
+"
+0x7ffe7a3233d4 - 10
+0x7ffe7a3233d5 - 27
+0x7ffe7a3233d6 - 00
+0x7ffe7a3233d7 - 00
+"
+com long a endien mantem (obviamente), unica diferenca mesmo fica no tamanho do tipo, o int anteriormente sendo 4 bytes e o long sendo 8 bytes. (os dois com valor 1000)
+"
+0x7fff88e16920 - 10
+0x7fff88e16921 - 27
+0x7fff88e16922 - 00
+0x7fff88e16923 - 00
+0x7fff88e16924 - 00
+0x7fff88e16925 - 00
+0x7fff88e16926 - 00
+0x7fff88e16927 - 00
+"
+e o short segue a mesma logica, porem short so tem 2 bytes e quase que nao cabe
+"
+0x7ffd3bab0f36 - 10
+0x7ffd3bab0f37 - 27
+"
+testando o char com valores de 97 e 'a' percebo que como 97 em hexadecimal é 61 e o 'a' na tabela ascii tambem é 61 fiquei na duvida de como era tratado o char em C, pesquisei sobre e vi
+que o mesmo poderia ser usado em contas, e que funciona como um pequeno (menor que short) int. Na memoria de fato é impossivel diferenciar, mas o que salva é o tipo da variavel no programa.
+
+
+a funcao string2num parece transformar uma string em um numero, como vimos anteriormente o char é interpretado como numero, por isso acontecer é possivel fazer operacoes como as que sao vistas nessa funcao.
+Para cada caractere ele diminui o caracter '0', isso serve para que ele retire a "tabela ascii" da conta, pois o caracter '0' tem o valor de todos os outros caracteres antes dele, sendo assim se '0' = 48 o '3' seria 48+3, e a diferenca iria resultar no exato numero que buscamos para conversao (48+3-48)
+E para organizar isso na forma decimal temos a multiplicacao de 'a' por 10 + o numero que achamos com a logica anterior.
+
+modificando a funcao string2num de acordo com meu entendimento da funcao eu so deveria substituir o '10' que multiplicava pelo valor da base escolhida.
+os resultados para os testes de  "printf("%d\n", string2num("777", 8)); e printf("%d\n", string2num("777", 10));" foram 511 e 777 respectivamente
+
+para aceitar valores da base maiores que 10 optei por fazer em duas etapas, caso o numero esteja entre 0 e 9 ou 'a' e 'z', caso esteja entre 0 e 9 o processo sera igual, caso esteja entre 'a' e 'z' fazemos (*s - 'a'+10), isso garante que se o digito for 'a' o valor dele é 10 e que qualquer valor acima dele ate 'z' estaria sendo representado corretamente

@@ -1,0 +1,25 @@
+ao executar "pwd" inicialmente obtive o caminho "/workspaces/INF1018_Danilo" e ao usar "ls" obtive "README.md  inf1018"
+apos criar a "inf1018" com o comando "mkdir inf1018" usei "cd inf1018" para chegar ao local e novamente usei "pwd" e dessa vez a resposta foi "/workspaces/INF1018_Danilo/inf1018"
+optei por criar esse relatorio usando "> relatorio.txt" que vi em aula, e da mesma forma criei "ex1.c"
+utilizando "gcc -Wall -o ex1 ex1.c" ele gerou um arquivo binario (acordo com meu entedimento da aula)
+executando "./ex1 4.0" -> "foo(4.00): 5.00"
+ao tentar "./ex1"-> "cannot execute binary file: Exec format error" (imagino que seja o erro citado em aula)
+tentando rodar o comando "./ex1 4.0" novamente ele deu um erro "bash: ./ex1: cannot execute binary file: Exec format error" e ai percebi que precisaria rodar o "gcc -Wall -o ex1 ex1.c" para rodar comandos parecidos com "ex1 etc..."
+entao rodando da maneira correta o "./ex1" temos "uso do programa: ./ex1 <valor float>" nao sei se ficou muito claro, mas parece que isso nos mostra o tipo de retorno do programa
+tentando o "ex1" ele da "bash: ex1: command not found", meu palpite é que sem o ./ ele nao encontra o caminho, o ./ seria o endereco tipo "raiz" da pasta atual
+
+ao usar o "gcc -Wall -o ex3 labaux.c ex3.c" recebi wwarnings 
+"ex3.c: In function ‘main’:
+ex3.c:11:35: warning: implicit declaration of function ‘foo’ [-Wimplicit-function-declaration]
+   11 |   printf ("foo(%.2f): %.2f\n", f, foo(f));
+      |                                   ^~~
+ex3.c:11:26: warning: format ‘%f’ expects argument of type ‘double’, but argument 3 has type ‘int’ [-Wformat=]
+   11 |   printf ("foo(%.2f): %.2f\n", f, foo(f));
+      |                       ~~~^        ~~~~~~
+      |                          |        |
+      |                          double   int
+      |                       %.2d"
+e mesmo com os warnings o resultado foi "parecido" "./ex3 4.0"->"foo(4.00): 0.00"
+
+O que você pode concluir sobre o armazenamento das variáveis c e i, e do vetor v?
+Eu conclui que c2 é armazenada como o numero da tabela ascii e nesse caso era 49, o I é salvo em 4 bytes da esquerda para direita, o V seria uma cadeia de caracter, e ele salva o simbolo "1"(49) e o /0 no fim, agora o c1 eu fiquei na duvida do que ele significa, ficou salvo como 1 mas eu realmente nao entendi

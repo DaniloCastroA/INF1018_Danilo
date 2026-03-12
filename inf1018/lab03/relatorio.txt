@@ -1,0 +1,5 @@
+Tentei inicialmente guardar o valor menos significativo shiftando ele "y = (x<<24)>>24;" mas acredito que seja a maneira errada de resolver isso, vou buscar solucao nos operadores
+Ao usar uma mascara e deixando o valor do fim (numero menos significativo) positivo e usando o operador & é possivel manter o menos significativo.
+
+
+Pra resolver o segundo problema de FF como mais significativo usei o 0xFF000000 e o operador |, isso garante q sempre comecara com FF 

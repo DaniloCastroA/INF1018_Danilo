@@ -3,3 +3,9 @@ Ao usar uma mascara e deixando o valor do fim (numero menos significativo) posit
 
 
 Pra resolver o segundo problema de FF como mais significativo usei o 0xFF000000 e o operador |, isso garante q sempre comecara com FF 
+Apos pensar um pouco percebi que poderia acumular valores de 1 usando o operador & e 1, assim fazendo uma soma de 1's
+
+shiftei para o lado em 4 em ambas as direcoes e somente isso
+
+
+com a mesma logica da anterior apenas apliquei a logica especifica do enunciado e funcionou corretamente

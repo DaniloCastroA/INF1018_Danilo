@@ -1,0 +1,76 @@
+tamanho de int b[2]; eu suponho que seja o tamanho de int * 2 e no nosso caso provalvemente é 8 bytes
+agora de short a[2][3]; eu acredito que seja o tamanho do short * 2 * 3 que é 12 bytes
+"e como você acha que eles são armazenados em memória?"
+Acredito que em sequencia mesmo, o b[2] sendo bloco[0] e bloco[1] em sequencia e o a[2][3] sendo tipo um bloco[0][0] bloco[0][1] bloco[0][2] bloco[1][0] etc etc
+
+
+exc1 precisou alterar algumas coisas e adicinar a dump da aula 1 para funcionar, e ficou como 
+b: 0 0 0 0 1 0 0 0
+a: 0 0 1 0 2 0 3 0 4 0 5 0
+ficou um pouco confuso de primeiro momento mas pelo oq eu entendi ele imprime pela ordem de qual foi adicionada e se isso estiver certo a minha logica estava correta
+muito interessante esse comportamento da estrutura x pois por conta da organizacao o compilador precisa adicionar um padding para preencher os 2 bytes que faltam para ser multiplo de 4
+algo como:
+bloco int [x x x x]
+bloco short [x x]
+bloco int [x x x x]
+porem int precisa estar alinhado em multiplos de 4 bytes e ai se cria o padding 
+
+struct X1 {
+  char c1;
+  int i;
+  char c2;
+};
+tamanho: char = 1 byte e int = 4 bytes, porem pela organizacao temos o primeiro byte + o padding de 3 bytes + o int + o ultimo char e ainda o padding final pois a struct herda o alinhamento do maior tipo dentro dela, e nesse caso é o int com multiplo de 4
+
+1+3+4+1+3=12 bytes
+
+struct X2 {
+  long l;
+  char c;
+};
+como o maior alinhamento é 8 herdado do long o tamanho é 8 (long) + 1 (char) + 7 de padding para o alinhamento ficando entao 16
+
+struct X3 {
+  int i;
+  char c1;
+  char c2;
+};
+
+4 (int) + 1 (char) + 1 (char) + 2 (padding) = 8bytes
+
+struct X4 {
+  struct X2 x;
+  char c;
+};
+alinhamento da struct X2 é 16, entao fica 16 + 1 + 15 (de padding) = 32
+
+struct X5 {
+  char c1;
+  char c2;
+  char c3;
+};
+somente 3 pois nao ha exigencia de padding maior que 1
+
+struct X6 {
+  short s1;
+  int i;
+  char c[3];
+  short s2;
+};
+maior alinhamento é do int que oculpa 4, entao vamos la 
+2 (short) + 2 (padding) + 4 (int) + 3 (char) + 1 (padding) + 2 (short) + 2 (padding final) = 16
+
+union U1 {
+  int i;
+  char c[5];
+};
+
+o union sempre vai ter o maior alinhamento "possivel", nesse caso o maior é 5 bytes do char[5], porem ele ainda tem a regra do int que precisa ser multiplo de 4, e nesse caso o primeiro numero maior que 5 e multiplo de 4 é 8
+sendo assim 8 bytes
+
+union U2 {
+  short s;
+  char c[5];
+};
+aqui segue a mesma logica:
+maior alinhamento é do short que é 2, entao precisa ser multiplo de 2, e o maior byte é do char[5], precisa entao ser maior que 5 e multiplo de 2, q no caso é 6

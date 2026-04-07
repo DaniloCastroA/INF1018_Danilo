@@ -1,0 +1,20 @@
+no primeiro exercicio apresentado, ao fazer os calculos do short s=-3 cheguei em FDFFx pois short tem somente 2 bytes
+
+
+agora em char c=150 como char tem 1 bytes temos 1001 0110 em binario e em hexa 96x
+e no int i=-151 como ja sabemos o valor de 150 é somente inverter os bits -> 1001 0110 -> 0110 1001 -> 69, porem int tem 4 bytes entao seria 
+0110 0101 1111 1111 1111 1111 1111 1111 -> 69 FF FF FF
+
+
+no exercicio 2 o short l= -32765, a negacao de 32765 +1 = l -> 32765= 0111 1111 1111 1101 inverte = 1000 0000 0000 0010 + 1 -> 1000 0000 0000 0011
+e em hexadecimal = 8 0 0 3 em little endian -> 03 80 
+e so convertendo o 32771 para hexadecimal obtemos o mesmo resultado 03 80, sao representados iguais
+
+no exercicio 3 cheguei em um resultado aproximado usando a logica de acumular o valor com multiplicação e soma, e usei operações de bit para extrair bytes mas reconheco que ainda esta incorreto e precisa de ajustes 
+
+exc4 prog1: o programa faz uma comparacao normal, um numero esta em hexa e o outro em decimal porem o programa converte todos para binario e interpreta o -1 como -1 pois o sinal nesse caso importa e somente ai que é feita a comparacao e por isso funciona
+prog2: como agora o sinal nao importa ele nao enxerga mais o 0xffffffff como -1 e sim como 4294967295
+
+prog3: como x é unsigned e o compilador quando compara signed com unsigned ele interpreta os dois como unsigned e assim chegando na mesma conclusao que o prog2
+
+como signed -1 é igual o maior valor possivel do unsigned se tivessem o mesmo tamanho, a  ideia que eu tive é simples. -1 signed = 1111 1111 (2 bytes) e unsigned 1111 1111 0000 0000 0000 0000 0000 0000, porem eu entendi tambem que os 0's sao sempre preenchido pelos bits mais significativos, ficando assim a conversao direta de 1111 1111 1111 1111 1111 1111 1111 1111 ou seja FF FF FF FF  

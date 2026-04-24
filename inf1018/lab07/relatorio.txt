@@ -1,0 +1,2 @@
+exc3:
+muito dificil, acredito que eu nao tenha feito da maneira correta pois tive q fazer um reset forcado de r12 para o inicio do ponteiro.

@@ -1,0 +1,2 @@
+tive que pensar e pesquisar bastante para entender o funcionamento da recursao em assembly para mim nao foi tao trivial
+tambem muito complicado a funcao foo, mas consegui entender no fim das contas, nao sei se deveria usar a pilha para armazenar algo em alguma dessas traducoes mas eu consegui fazer sem isso

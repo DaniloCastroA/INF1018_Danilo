@@ -3,3 +3,4 @@
 #./ex1
 #gcc -no-pie -o prog1 prog1.s
 #./prog1
+# gcc -Wall -no-pie -o prog add.s main.c

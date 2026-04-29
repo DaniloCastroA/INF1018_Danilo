@@ -1,0 +1,1 @@
+legal mexer com struct, fico imaginando como é criar uma struct em assembly (eu tentei e nao deu certo)

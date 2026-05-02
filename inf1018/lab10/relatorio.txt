@@ -1,1 +1,2 @@
 legal mexer com struct, fico imaginando como é criar uma struct em assembly (eu tentei e nao deu certo)
+gostei bastante da parte de aritmética de ponteiro e como eu preciso ficar jogando o conteudo dos registradores de um lado para o outro isso ficou mais claro pra mim agora do que quando eu fazia a disciplina de C
